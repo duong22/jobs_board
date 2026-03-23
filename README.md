@@ -45,7 +45,7 @@ python manage.py runserver
 ```
 
 Backend will be running at: `http://localhost:8000`  
-Admin panel: `http://localhost:8000/admin`
+Admin panel: `http://localhost:8000/admin`  
 APIs List: `http://localhost:8000/docs/` 
 
 ---
