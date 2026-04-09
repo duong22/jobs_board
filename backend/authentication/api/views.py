@@ -1,5 +1,5 @@
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from authentication.models import User
@@ -35,3 +35,4 @@ class ChangePasswordView(generics.UpdateAPIView):
     queryset = User.objects.all()
     permission_classes = (IsAuthenticated,) 
     serializer_class = ChangePasswordSerializer
+
