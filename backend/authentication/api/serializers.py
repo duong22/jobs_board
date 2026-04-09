@@ -4,8 +4,6 @@ from django.contrib.auth.password_validation import validate_password
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from authentication.models import User
-from job_board.models.candidate import CandidateProfile
-from job_board.models.employer import EmployerProfile
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -101,14 +99,3 @@ class LoginSerializer(TokenObtainPairSerializer):
             **data,
         }
 
-class CandidateProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CandidateProfile
-        # Выбираем поля, которые были в твоей модели
-        fields = ('resume_url', 'linkedin_url')        
-
-class EmployerProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = EmployerProfile
-        # Поля из вашей модели EmployerProfile 
-        fields = ('company_name', 'company_website', 'description', 'location')

@@ -1,5 +1,6 @@
 from django.urls import path
-from .api.views import RegisterView, ChangePasswordView, LogoutView, LoginView, CandidateProfileView, EmployerProfileView
+from .api.views import RegisterView, ChangePasswordView, LogoutView, LoginView
+from job_board.api.porfile.views import CandidateProfileView, EmployerProfileView
 
 urlpatterns = [
 	path('login/', LoginView.as_view(), name='token_obtain_pair'),
