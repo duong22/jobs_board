@@ -3,23 +3,30 @@ from job_board.models.candidate import CandidateProfile
 from job_board.models.employer import EmployerProfile
 
 class CandidateProfileSerializer(serializers.ModelSerializer):
-    # Добавляем данные из связанной модели User
+    # Достаем 4 поля из связанной модели User
+    id = serializers.ReadOnlyField(source='user.id')
     username = serializers.ReadOnlyField(source='user.username')
     email = serializers.ReadOnlyField(source='user.email')
+    role = serializers.ReadOnlyField(source='user.role')
 
     class Meta:
         model = CandidateProfile
-        # Поля: username и email теперь включены в список [cite: 51]
-        fields = ('username', 'email', 'resume_url', 'linkedin_url')
-        read_only_fields = ('username', 'email')
+        # Полный список полей для GET запроса
+        fields = ('id', 'username', 'email', 'role', 'resume_url', 'linkedin_url')
+        # Эти поля нельзя менять через PUT в этом эндпоинте
+        read_only_fields = ('id', 'username', 'email', 'role')
 
 class EmployerProfileSerializer(serializers.ModelSerializer):
-    # Добавляем данные из связанной модели User
+    # Достаем 4 поля из связанной модели User
+    id = serializers.ReadOnlyField(source='user.id')
     username = serializers.ReadOnlyField(source='user.username')
     email = serializers.ReadOnlyField(source='user.email')
+    role = serializers.ReadOnlyField(source='user.role')
 
     class Meta:
         model = EmployerProfile
-        # Поля: включая username и email по просьбе супервайзера [cite: 51]
-        fields = ('username', 'email', 'company_name', 'company_website', 'description', 'location')
-        read_only_fields = ('username', 'email')
+        fields = (
+            'id', 'username', 'email', 'role', 
+            'company_name', 'company_website', 'description', 'location'
+        )
+        read_only_fields = ('id', 'username', 'email', 'role')
