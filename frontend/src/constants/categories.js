@@ -1,0 +1,17 @@
+export const JOB_CATEGORIES = [
+    { value: "engineering", label: "Engineering & Technology" },
+    { value: "design", label: "Design & Creative" },
+    { value: "marketing", label: "Marketing & Communications" },
+    { value: "sales", label: "Sales & Business Development" },
+    { value: "finance", label: "Finance & Accounting" },
+    { value: "hr", label: "Human Resources" },
+    { value: "customer_service", label: "Customer Service & Support" },
+    { value: "operations", label: "Operations & Logistics" },
+    { value: "healthcare", label: "Healthcare & Medical" },
+    { value: "education", label: "Education & Training" },
+    { value: "legal", label: "Legal" },
+    { value: "data", label: "Data & Analytics" },
+    { value: "product", label: "Product Management" },
+    { value: "admin", label: "Administrative & Clerical" },
+    { value: "other", label: "Other" },
+]
