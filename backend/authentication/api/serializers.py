@@ -100,3 +100,15 @@ class LoginSerializer(TokenObtainPairSerializer):
             'role': self.user.role,
             **data,
         }
+
+class CandidateProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CandidateProfile
+        # Выбираем поля, которые были в твоей модели
+        fields = ('resume_url', 'linkedin_url')        
+
+class EmployerProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmployerProfile
+        # Поля из вашей модели EmployerProfile 
+        fields = ('company_name', 'company_website', 'description', 'location')
