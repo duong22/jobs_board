@@ -1,5 +1,7 @@
-from .music.views import ArtistViewSet
-from rest_framework.routers import DefaultRouter
+from .profile.views import CandidateProfileView, EmployerProfileView
+from django.urls import path
 
-router = DefaultRouter()
-urlpatterns = router.urls
+urlpatterns = [
+	path('profile/candidate/', CandidateProfileView.as_view(), name='candidate_profile'),
+	path('profile/employer/', EmployerProfileView.as_view(), name='employer_profile'),
+]

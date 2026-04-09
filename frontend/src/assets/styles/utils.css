@@ -1,0 +1,185 @@
+/* ---- Page structure ---- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.8rem;
+  }
+  .page-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .page-header p {
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+  }
+  
+  .page-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .page-sub {
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+  }
+  
+  .back-link {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+    cursor: pointer;
+  }
+  .back-link:hover {
+    color: var(--ink);
+  }
+  
+  /* ---- Card ---- */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .card h2 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  
+  /* ---- Alerts ---- */
+  .alert-success {
+    background: var(--green-bg);
+    border: 1px solid #9be9a8;
+    color: var(--green-text);
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    margin-bottom: 1.2rem;
+  }
+  .alert-error {
+    background: var(--red-bg);
+    border: 1px solid var(--red-border);
+    color: var(--red-text);
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    margin-bottom: 1.2rem;
+  }
+  .alert-info {
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    color: var(--blue-text);
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  /* ---- Badges ---- */
+  .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+  }
+  .badge-blue   { background: var(--blue-bg);   color: var(--blue-text); }
+  .badge-green  { background: var(--green-bg);  color: var(--green-text); }
+  .badge-red    { background: var(--red-bg);    color: var(--red-text); }
+  .badge-orange { background: var(--orange-bg); color: var(--orange-text); }
+  .badge-gray   { background: #f3f3f3; border: 1px solid var(--border); color: var(--ink-soft); }
+  .badge-pill   { border-radius: 20px; }
+  
+  /* Role badges */
+  .role-candidate { background: var(--orange-bg); color: var(--orange-text); }
+  .role-employer  { background: var(--green-bg);  color: var(--green-text); }
+  
+  /* ---- State messages ---- */
+  .state-loading,
+  .state-empty,
+  .state-error {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+  
+  /* ---- Table ---- */
+  .table-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .table th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    background: #fafafa;
+  }
+  .table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.875rem;
+    color: #333;
+    vertical-align: middle;
+  }
+  .table tr:last-child td {
+    border-bottom: none;
+  }
+  .table tr:hover td {
+    background: #fafafa;
+  }
+  
+  /* ---- Modal ---- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .modal {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    width: 100%;
+    max-width: 420px;
+    margin: 1rem;
+  }
+  .modal h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .modal p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+  }

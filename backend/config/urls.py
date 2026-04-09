@@ -9,6 +9,7 @@ urlpatterns = [
 	path('auth/', include('authentication.urls')),
 	path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('docs/', SpectacularSwaggerView.as_view(), name='swagger-ui'),
+	path('api/', include('job_board.api.urls'))
 ]
 
 if settings.DEBUG:
