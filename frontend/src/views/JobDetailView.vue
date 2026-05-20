@@ -63,6 +63,7 @@
   import BaseLayout from './BaseLayout.vue'
   import { useAuthStore } from '@/stores/auth'
   import { jobsService } from '@/services/jobs.service'
+  import { applicationsService } from '@/services/application.service'
   
   const route = useRoute()
   const auth = useAuthStore()
@@ -93,11 +94,11 @@
     applying.value = true
     applyError.value = null
     try {
-      await new Promise(r => setTimeout(r, 600)) // placeholder
+      await applicationsService.apply(job.value.id)
       applySuccess.value = true
     } catch (err) {
       const data = err.response?.data
-      applyError.value = data?.detail || 'Failed to apply. Please try again.'
+      applyError.value = Array.isArray(data) ? data[0] : data?.detail || 'Failed to apply. Please try again.'
     } finally {
       applying.value = false
     }

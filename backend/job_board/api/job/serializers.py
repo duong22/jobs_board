@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from job_board.models.job import Job
 
-
 class JobSerializer(serializers.ModelSerializer):
     company_name = serializers.CharField(source='employer.company_name', read_only=True)
     company_location = serializers.CharField(source='employer.location', read_only=True)

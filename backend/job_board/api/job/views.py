@@ -5,7 +5,6 @@ from rest_framework.exceptions import PermissionDenied, NotFound
 from job_board.models.job import Job
 from .serializers import JobSerializer
 
-
 class JobFilter(django_filters.FilterSet):
     location = django_filters.CharFilter(lookup_expr='icontains')
 
@@ -13,13 +12,11 @@ class JobFilter(django_filters.FilterSet):
         model = Job
         fields = ['category', 'job_type', 'location', 'status']
 
-
 def require_employer(user):
     if not user.is_authenticated:
         raise PermissionDenied('Authentication required.')
     if user.role != 'employer':
         raise PermissionDenied('Only employers can perform this action.')
-
 
 class JobListCreateView(generics.ListCreateAPIView):
     serializer_class = JobSerializer

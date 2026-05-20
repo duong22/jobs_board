@@ -8,6 +8,7 @@ import JobView from '@/views/JobView.vue'
 import JobDetailView from '@/views/JobDetailView.vue'
 import JobCreateView from '@/views/JobCreateView.vue'
 import JobEditVIew from '@/views/JobEditVIew.vue'
+import ApplicationView from '@/views/ApplicationView.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -17,7 +18,7 @@ const routes = [
   { path: '/jobs', name: 'jobs', component: JobView },
   { path: '/jobs/:id', name: 'jobs-detail', component: JobDetailView},
   { path: '/profile', name: 'profile', component: ProfileView, meta: { requiresAuth: true } },
-  // { path: '/applications', name: 'applications', component: () => import('@/views/ApplicationsView.vue'), meta: { requiresAuth: true, role: 'candidate' } },
+  { path: '/applications', name: 'applications', component: ApplicationView, meta: { requiresAuth: true, role: 'candidate' } },
   { path: '/dashboard', name: 'dashboard', component: DashboardView, meta: { requiresAuth: true, role: 'employer' } },
   { path: '/jobs/create', name: 'jobs-create', component: JobCreateView, meta: { requiresAuth: true, role: 'employer' } },
   { path: '/jobs/:id/edit', name: 'jobs-edit', component: JobEditVIew, meta: { requiresAuth: true, role: 'employer' } },

@@ -2,7 +2,6 @@ from django.db import models
 from .base import BaseModel
 from .employer import EmployerProfile
 
-
 class Job(BaseModel):
     STATUS_CHOICES = [
         ("open", "Open"),
