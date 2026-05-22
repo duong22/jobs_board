@@ -24,6 +24,7 @@
               <th>Company</th>
               <th>Applied</th>
               <th>Status</th>
+              <th>CV</th>
             </tr>
           </thead>
           <tbody>
@@ -37,6 +38,10 @@
                 <span class="badge badge-pill" :class="statusBadge(app.status)">
                   {{ app.status_display }}
                 </span>
+              </td>
+              <td>
+                <button v-if="app.cv_file" @click="downloadCv(app.id)" style="color: #0066cc; border:none; background:none; cursor:pointer; font-size:0.9rem;">Download CV</button>
+                <span v-else style="color: #999; font-size:0.9rem;">No CV</span>
               </td>
             </tr>
           </tbody>
@@ -71,6 +76,21 @@ onMounted(async () => {
   catch { error.value = 'Failed to load applications.' }
   finally { loading.value = false }
 })
+
+async function downloadCv(appId) {
+  try {
+    const res = await applicationsService.downloadCv(appId)
+    const url = window.URL.createObjectURL(new Blob([res.data]))
+    const link = document.createElement('a')
+    link.href = url
+    link.setAttribute('download', `cv_application_${appId}`)
+    document.body.appendChild(link)
+    link.click()
+    link.parentNode.removeChild(link)
+  } catch (e) {
+    alert("Failed to download CV.")
+  }
+}
 </script>
 
 <style scoped>

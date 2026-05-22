@@ -1,8 +1,10 @@
 import api from './api'
 
 export const applicationsService = {
-  apply(jobId, coverLetter = '') {
-    return api.post(`/api/jobs/${jobId}/apply/`, { cover_letter: coverLetter })
+  apply(jobId, formData) {
+    return api.post(`/api/jobs/${jobId}/apply/`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
   },
   getAll() {
     return api.get('/api/applications/')
@@ -12,5 +14,8 @@ export const applicationsService = {
   },
   updateStatus(id, status) {
     return api.patch(`/api/applications/${id}/status/`, { status })
+  },
+  downloadCv(id) {
+    return api.get(`/api/applications/${id}/cv/`, { responseType: 'blob' })
   },
 }

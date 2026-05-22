@@ -15,6 +15,7 @@ class Application(BaseModel):
     candidate = models.ForeignKey(CandidateProfile, on_delete=models.CASCADE, related_name='applications')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     cover_letter = models.TextField(blank=True)
+    cv_file = models.FileField(upload_to='cvs/%Y/%m/%d/', blank=True, null=True)
 
     class Meta:
         app_label = 'job_board'

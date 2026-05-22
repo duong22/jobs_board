@@ -1,6 +1,8 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied, NotFound, ValidationError
+from rest_framework.parsers import MultiPartParser, FormParser
+from django.http import FileResponse
 from job_board.models.job import Job
 from job_board.models.application import Application
 from .serializers import ApplicationSerializer, ApplicationStatusSerializer
@@ -16,6 +18,7 @@ def require_employer(user):
 class ApplyJobView(generics.CreateAPIView):
     serializer_class   = ApplicationSerializer
     permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
 
     def perform_create(self, serializer):
         require_candidate(self.request.user)
@@ -88,3 +91,25 @@ class ApplicationStatusUpdateView(generics.UpdateAPIView):
             raise PermissionDenied('You can only update applications for your own jobs.')
 
         return app
+
+class ApplicationCVDownloadView(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            app = Application.objects.select_related(
+                'job__employer', 'candidate__user'
+            ).get(pk=self.kwargs['pk'])
+        except Application.DoesNotExist:
+            raise NotFound('Application not found.')
+            
+        user = request.user
+        if user.role == 'candidate' and app.candidate.user != user:
+            raise PermissionDenied()
+        if user.role == 'employer' and app.job.employer.user != user:
+            raise PermissionDenied()
+            
+        if not app.cv_file:
+            raise NotFound('No CV file attached to this application.')
+            
+        return FileResponse(app.cv_file.open('rb'), as_attachment=True, filename=app.cv_file.name.split('/')[-1])

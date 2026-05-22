@@ -16,6 +16,7 @@ class ApplicationSerializer(serializers.ModelSerializer):
             'company_name',
             'candidate_username',
             'cover_letter',
+            'cv_file',
             'status',
             'status_display',
             'created_at',
